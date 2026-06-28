@@ -236,25 +236,12 @@ Possible predictions:
 
 ---
 
-## Screenshots
+## Dashboard Screenshot
 
-### Dashboard
+<p align="center">
+  <img src="screenshot.png" width="900">
+</p>
 
-Add dashboard screenshot here:
-
-```text
-images/dashboard.png
-```
-
-### Circuit
-
-Add wiring image here:
-
-```text
-images/circuit.jpg
-```
-
----
 
 ## License
 
