@@ -251,6 +251,8 @@ This project is licensed under the MIT License.
 
 ## Author
 
-**Dominic**
+**dominicpe2k04**
+**email : dominicpe2k04@gmail.com**
+
 
 Built with ❤️ using Raspberry Pi, Python, Flask, and GPIO.
