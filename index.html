@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Station</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial;
+        }
+
+        body{
+            background:#111827;
+            color:white;
+            min-height:100vh;
+            padding:20px;
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        .prediction{
+            background:#2563eb;
+            padding:25px;
+            border-radius:20px;
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        .prediction h2{
+            margin-bottom:10px;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:20px;
+        }
+
+        .card{
+            background:#1f2937;
+            border-radius:20px;
+            padding:30px;
+            text-align:center;
+        }
+
+        .label{
+            color:#9ca3af;
+            margin-bottom:15px;
+        }
+
+        .value{
+            font-size:40px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>??? Weather Station</h1>
+
+<div class="prediction">
+    <h2>Prediction</h2>
+    <div id="prediction">Loading...</div>
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <div class="label">??? Temperature</div>
+        <div class="value" id="temp">--</div>
+    </div>
+
+    <div class="card">
+        <div class="label">?? Humidity</div>
+        <div class="value" id="hum">--</div>
+    </div>
+
+    <div class="card">
+        <div class="label">??? Pressure</div>
+        <div class="value" id="pres">--</div>
+    </div>
+
+    <div class="card">
+        <div class="label">?? Light</div>
+        <div class="value" id="light">--</div>
+    </div>
+
+</div>
+
+<script>
+async function updateData() {
+    const response = await fetch('/api/data');
+    const data = await response.json();
+
+    document.getElementById('temp').innerHTML =
+        `${data.temperature ?? '--'}�C`;
+
+    document.getElementById('hum').innerHTML =
+        `${data.humidity ?? '--'}%`;
+
+    document.getElementById('pres').innerHTML =
+        `${data.pressure ?? '--'} hPa`;
+
+    document.getElementById('light').innerHTML =
+        data.light ? 'Bright' : 'Dark';
+
+    document.getElementById('prediction').innerHTML =
+        data.prediction_text;
+}
+
+updateData();
+setInterval(updateData, 2000);
+</script>
+
+</body>
+</html>
